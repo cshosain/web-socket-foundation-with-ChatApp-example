@@ -9,6 +9,10 @@ A foundational project showcasing a real-time chat application built with [Socke
 - Modern, responsive chat interface
 - Built with Node.js, Express, and Socket.IO
 
+## UI Sample
+
+![Chat App UI Sample](./public/Ui-sample.png)
+
 ## Getting Started
 
 ### Prerequisites
@@ -46,9 +50,15 @@ A foundational project showcasing a real-time chat application built with [Socke
 ├── package.json
 ├── public
 │   ├── index.html
-│   └── style.css
+│   ├── style.css
+│   └── Ui-sample.png
+├── readme.md
 ```
 
 ## License
 
-This project is licensed
+This project is licensed under the ISC License.
+
+---
+
+**Author:** Md.Hosain

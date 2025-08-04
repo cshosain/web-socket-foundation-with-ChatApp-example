@@ -21,10 +21,10 @@ const io = new Server(httpServer, {
 io.on("connection", (socket) => {
   console.log("A user connected");
   socket.on("disconnect", () => {
-    console.log("A user disconnected");
+    // console.log("A user disconnected");
   });
   socket.on("message", (msg) => {
-    console.log("Message received: ", msg);
+    // console.log("Message received: ", msg);
     io.emit("message", { msg, senderId: socket.id }); // Broadcast the message to all connected clients
   });
 });
