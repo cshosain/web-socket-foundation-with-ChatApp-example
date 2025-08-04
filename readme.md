@@ -21,7 +21,7 @@ A foundational project showcasing a real-time chat application built with [Socke
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/your-username/web-socket-foundation-with-ChatApp-example.git
+   git clone https://github.com/cshosain/web-socket-foundation-with-ChatApp-example.git
    cd web-socket-foundation-with-ChatApp-example
    ```
 
