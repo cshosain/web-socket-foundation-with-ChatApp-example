@@ -1,0 +1,105 @@
+/* Basic styling for the input field */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%; /* Full width */
+  padding: 7px 15px; /* Padding inside the input */
+  margin: 8px 0; /* Margin above and below */
+  display: inline-block; /* Allows width to be set */
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 21px; /* Slightly rounded corners */
+  box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+  font-size: 13px; /* Font size */
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition for focus effects */
+}
+
+/* Styling when the input field is focused */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #007bff; /* Blue border on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle blue shadow on focus */
+  outline: none; /* Removes default browser outline */
+}
+
+/* Placeholder text styling */
+input::placeholder {
+  color: #999; /* Light gray placeholder text */
+  font-style: italic; /* Italic placeholder text */
+}
+.main-h1 {
+  text-align: center; /* Center the heading */
+  font-size: 24px; /* Font size for the heading */
+  color: #333; /* Dark gray color for the heading */
+  margin-bottom: 20px; /* Space below the heading */
+}
+
+.container {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 300px;
+  height: 85vh; /* Full viewport height */
+  background-color: #f8f9fa; /* Light background color */
+}
+#messages {
+  overflow-y: auto;
+}
+.container .inputArea {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.container .inputArea button {
+  padding: 6px;
+  border: none;
+  width: 30px;
+  height: 25px;
+  background-color: limegreen;
+  cursor: pointer;
+  clip-path: polygon(0 0, 100% 50%, 0 100%, 18% 50%);
+}
+
+.message {
+  padding: 10px 16px;
+  margin: 8px 0;
+  border-radius: 18px;
+  max-width: 70%;
+  position: relative;
+  font-size: 16px;
+  word-break: break-word;
+  display: flex;
+  align-items: center;
+}
+
+.message.incoming {
+  background: #f1f0f0;
+  color: #333;
+  align-self: flex-start;
+  margin-right: auto;
+  border-bottom-left-radius: 0;
+}
+
+.message.outgoing {
+  background: #007bff;
+  color: #fff;
+  align-self: flex-end;
+  margin-left: auto;
+  border-bottom-right-radius: 0;
+}
+
+.delivery-icon {
+  margin-left: 8px;
+  font-size: 18px;
+  color: #fff;
+  vertical-align: middle;
+}
+
+/* Container for messages */
+#messageList {
+  display: flex;
+  flex-direction: column;
+}

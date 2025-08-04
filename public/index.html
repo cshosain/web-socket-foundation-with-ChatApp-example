@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat App</title>
+    <!-- inport style.css file-->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 class="main-h1">Welcome to Chat App</h1>
+    <div class="container">
+      <div id="messages">
+        <ul id="messageList">
+          <!-- Messages will be appended here -->
+        </ul>
+      </div>
+      <div class="inputArea">
+        <input
+          type="text"
+          name=""
+          id="input"
+          placeholder="Type your message here"
+        />
+        <button id="send"></button>
+      </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const input = document.getElementById("input");
+      const sendButton = document.getElementById("send");
+      const messageList = document.getElementById("messageList");
+      const socket = io();
+
+      function addMessage(msg, type, delivered = false) {
+        const li = document.createElement("li");
+        li.textContent = msg;
+        li.classList.add("message", type);
+        if (type === "outgoing") {
+          // Add delivery icon
+          const icon = document.createElement("span");
+          icon.className = "delivery-icon";
+          icon.title = delivered ? "Delivered" : "Sending...";
+          icon.innerHTML = delivered ? "&#10003;" : "&#8987;";
+          li.appendChild(icon);
+        }
+        messageList.appendChild(li);
+      }
+
+      sendButton.addEventListener("click", () => {
+        const message = input.value;
+        if (message) {
+          addMessage(message, "outgoing", false);
+          socket.emit("message", message);
+          input.value = "";
+        }
+      });
+
+      socket.on("message", (data) => {
+        // Only show incoming messages if not sent by this client
+        if (data.senderId !== socket.id) {
+          addMessage(data.msg, "incoming");
+        } else {
+          // Mark last outgoing as delivered
+          const outgoingMessages = document.querySelectorAll(
+            ".message.outgoing .delivery-icon"
+          );
+          if (outgoingMessages.length) {
+            outgoingMessages[outgoingMessages.length - 1].innerHTML =
+              "&#10003;";
+            outgoingMessages[outgoingMessages.length - 1].title = "Delivered";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
